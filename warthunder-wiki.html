@@ -433,17 +433,12 @@
         // List of video files in the videos directory
         const videoFiles = [
             {
-                title: "Sample Gameplay 1",
-                filename: "videos/sample1.mp4",
+                title: "video 1",
+                filename: "videos/1.mp4",
                 description: "A sample gameplay video showing tank combat",
                 uploader: "Player123"
-            },
-            {
-                title: "Sample Gameplay 2",
-                filename: "videos/sample2.mp4",
-                description: "Air combat demonstration",
-                uploader: "Pilot456"
             }
+            
         ];
 
         function createVideoCard(video) {
@@ -451,7 +446,7 @@
             card.className = 'video-card';
             card.innerHTML = `
                 <div class="video-container">
-                    <video controls>
+                    <video controls preload="metadata">
                         <source src="${video.filename}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -474,6 +469,35 @@
             const videoGrid = document.getElementById('videoGrid');
             videoFiles.forEach(video => {
                 const videoCard = createVideoCard(video);
+                const videoElement = videoCard.querySelector('video');
+                
+                // Add comprehensive error handling
+                videoElement.addEventListener('error', function(e) {
+                    console.error('Error loading video:', video.filename);
+                    console.error('Error code:', videoElement.error.code);
+                    console.error('Error message:', videoElement.error.message);
+                    
+                    const errorMsg = document.createElement('p');
+                    errorMsg.style.color = 'red';
+                    errorMsg.textContent = `Error loading video: ${video.filename} (Code: ${videoElement.error.code})`;
+                    videoElement.parentElement.appendChild(errorMsg);
+                });
+
+                // Add load success handling
+                videoElement.addEventListener('loadeddata', function() {
+                    console.log('Video loaded successfully:', video.filename);
+                });
+
+                // Add loading progress
+                videoElement.addEventListener('progress', function() {
+                    console.log('Loading progress:', video.filename);
+                });
+
+                // Add canplay event
+                videoElement.addEventListener('canplay', function() {
+                    console.log('Video can play:', video.filename);
+                });
+
                 videoGrid.appendChild(videoCard);
             });
         }
