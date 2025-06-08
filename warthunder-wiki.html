@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>War Thunder Wiki</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-bg: #f5f6fa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+        }
+
+        .article {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .sidebar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--secondary-color);
+            margin: 1rem 0;
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .vehicle-category {
+            background: var(--light-bg);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .vehicle-category h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box {
+            background: var(--light-bg);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        .info-box h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .game-modes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .game-mode {
+            background: var(--light-bg);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .game-mode h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">War Thunder Wiki</div>
+            <nav>
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#gameplay">Gameplay</a></li>
+                    <li><a href="#vehicles">Vehicles</a></li>
+                    <li><a href="#modes">Game Modes</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <main class="article">
+                <h1>War Thunder</h1>
+                <p>War Thunder is a free-to-play vehicular combat multiplayer video game developed and published by Gaijin Entertainment. The game is based around combined arms battles on air, land, and sea, featuring vehicles from the Spanish Civil War to the present day.</p>
+
+                <section id="overview">
+                    <h2>Overview</h2>
+                    <p>War Thunder offers a realistic and immersive combat experience with a vast array of military vehicles from different nations. The game features detailed damage models, realistic physics, and authentic vehicle characteristics.</p>
+                </section>
+
+                <section id="gameplay">
+                    <h2>Gameplay Mechanics</h2>
+                    <div class="info-box">
+                        <h4>Key Features</h4>
+                        <ul>
+                            <li>Realistic damage models</li>
+                            <li>Detailed vehicle characteristics</li>
+                            <li>Combined arms warfare</li>
+                            <li>Multiple game modes</li>
+                            <li>Progression system</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section id="vehicles">
+                    <h2>Vehicle Categories</h2>
+                    <div class="vehicle-category">
+                        <h4>Aircraft</h4>
+                        <p>Includes fighters, bombers, attackers, and naval aircraft from various nations and eras.</p>
+                    </div>
+                    <div class="vehicle-category">
+                        <h4>Ground Forces</h4>
+                        <p>Features tanks, self-propelled guns, and anti-aircraft vehicles from different countries.</p>
+                    </div>
+                    <div class="vehicle-category">
+                        <h4>Naval Forces</h4>
+                        <p>Includes destroyers, cruisers, and other naval vessels with realistic water physics.</p>
+                    </div>
+                </section>
+
+                <section id="modes">
+                    <h2>Game Modes</h2>
+                    <div class="game-modes">
+                        <div class="game-mode">
+                            <h4>Arcade Battles</h4>
+                            <p>Fast-paced combat with simplified physics and mechanics.</p>
+                        </div>
+                        <div class="game-mode">
+                            <h4>Realistic Battles</h4>
+                            <p>More realistic gameplay with increased difficulty and rewards.</p>
+                        </div>
+                        <div class="game-mode">
+                            <h4>Simulator Battles</h4>
+                            <p>Full simulation mode with maximum realism and highest rewards.</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <aside class="sidebar">
+                <h3>Quick Facts</h3>
+                <div class="info-box">
+                    <h4>Developer</h4>
+                    <p>Gaijin Entertainment</p>
+                </div>
+                <div class="info-box">
+                    <h4>Release Date</h4>
+                    <p>November 1, 2012</p>
+                </div>
+                <div class="info-box">
+                    <h4>Platforms</h4>
+                    <p>Windows, macOS, Linux, PlayStation 4, PlayStation 5, Xbox One, Xbox Series X/S</p>
+                </div>
+                <div class="info-box">
+                    <h4>Game Engine</h4>
+                    <p>Dagor Engine</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 War Thunder Wiki - This is a fan-made wiki page for educational purposes</p>
+        </div>
+    </footer>
+</body>
+</html> 
