@@ -395,25 +395,8 @@
                 <section id="video-gallery" class="video-gallery">
                     <h2>Video Gallery</h2>
                     <p>Watch gameplay videos from the community</p>
-                    <div class="video-grid">
-                        <div class="video-card">
-                            <div class="video-container">
-                                <video id="video1" controls>
-                                    <source src="" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                            <div class="video-info">
-                                <h4>Sample Video Title</h4>
-                                <p>Uploaded by: User123</p>
-                                <p>Description: This is a sample video description.</p>
-                                <div class="video-controls">
-                                    <button onclick="playVideo('video1')">Play</button>
-                                    <button onclick="pauseVideo('video1')">Pause</button>
-                                    <button onclick="toggleFullscreen('video1')">Fullscreen</button>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="video-grid" id="videoGrid">
+                        <!-- Videos will be loaded here dynamically -->
                     </div>
                 </section>
             </main>
@@ -447,43 +430,36 @@
     </footer>
 
     <script>
-        document.getElementById('videoUploadForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const status = document.getElementById('uploadStatus');
-            const fileInput = this.querySelector('input[type="file"]');
-            const titleInput = this.querySelector('input[type="text"]');
-            
-            if (fileInput.files.length > 0) {
-                const file = fileInput.files[0];
-                const videoUrl = URL.createObjectURL(file);
-                
-                // Create new video card
-                const videoGrid = document.querySelector('.video-grid');
-                const newVideoCard = createVideoCard(titleInput.value, videoUrl);
-                videoGrid.insertBefore(newVideoCard, videoGrid.firstChild);
-                
-                status.textContent = 'Video uploaded successfully!';
-                status.className = 'upload-status success';
-                
-                // Reset form
-                this.reset();
+        // List of video files in the videos directory
+        const videoFiles = [
+            {
+                title: "Sample Gameplay 1",
+                filename: "videos/sample1.mp4",
+                description: "A sample gameplay video showing tank combat",
+                uploader: "Player123"
+            },
+            {
+                title: "Sample Gameplay 2",
+                filename: "videos/sample2.mp4",
+                description: "Air combat demonstration",
+                uploader: "Pilot456"
             }
-        });
+        ];
 
-        function createVideoCard(title, videoUrl) {
+        function createVideoCard(video) {
             const card = document.createElement('div');
             card.className = 'video-card';
             card.innerHTML = `
                 <div class="video-container">
                     <video controls>
-                        <source src="${videoUrl}" type="video/mp4">
+                        <source src="${video.filename}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="video-info">
-                    <h4>${title}</h4>
-                    <p>Uploaded by: You</p>
-                    <p>Description: ${title}</p>
+                    <h4>${video.title}</h4>
+                    <p>Uploaded by: ${video.uploader}</p>
+                    <p>Description: ${video.description}</p>
                     <div class="video-controls">
                         <button onclick="playVideo(this.parentElement.parentElement.parentElement.querySelector('video'))">Play</button>
                         <button onclick="pauseVideo(this.parentElement.parentElement.parentElement.querySelector('video'))">Pause</button>
@@ -492,6 +468,14 @@
                 </div>
             `;
             return card;
+        }
+
+        function loadVideos() {
+            const videoGrid = document.getElementById('videoGrid');
+            videoFiles.forEach(video => {
+                const videoCard = createVideoCard(video);
+                videoGrid.appendChild(videoCard);
+            });
         }
 
         function playVideo(video) {
@@ -509,6 +493,9 @@
                 document.exitFullscreen();
             }
         }
+
+        // Load videos when the page loads
+        window.addEventListener('load', loadVideos);
     </script>
 </body>
 </html> 
